@@ -1,8 +1,6 @@
 body {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
@@ -10,4 +8,168 @@ body {
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
+}
+
+.clock-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: pink;
+  height: 100vh;
+  animation: colorStuff 5000ms forwards infinite;
+}
+
+.clock {
+  display: grid;
+  grid-template: repeat(4, 200px) / repeat(2, 200px);
+  grid-template-areas:
+  "title title"
+  "timer timer"
+  "timer timer"
+  "button1 button2";
+  align-items: center;
+  justify-items: center;
+}
+
+.timerBackground {
+  grid-area: timer;
+  background-color: rgb(64, 57, 78);
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  display: flex; 
+  position: relative;
+  justify-content: center;
+  align-items: center;
+} 
+
+.centreCircle {
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  position: absolute;
+  background-color: gray;
+  z-index: 8;
+}
+
+.rainbowToggle {
+  position: absolute;
+  align-self: end;
+  justify-self: right;
+}
+
+.startButton {
+  grid-area: button2;
+  cursor: default;
+  border-radius: 50%;
+  width: 50%;
+  height: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+}
+
+@keyframes colorStuff {
+  0% {
+    background-color: dodgerblue;
+  }
+  20% {
+    background-color: plum;
+  }
+  40% {
+    background-color: crimson;
+  }
+  60% {
+    background-color: orange;
+  }
+  80% {
+    background-color: gold;
+  }
+  100% {
+    background-color: dodgerblue;
+  }
+}
+
+.stopButton {
+  grid-area: button1;
+  cursor: default;
+  border-radius: 50%;
+  width: 50%;
+  height: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  user-select: none;
+  background-color: grey;
+}
+
+.title {
+  grid-area: title;
+  font-size: 60px;
+  text-align: center;
+}
+
+.secondHand {
+  width: 7px;
+  height: 300px;
+  position: absolute;
+  z-index: 7;
+}
+
+.minuteHand {
+  width: 7px;
+  height: 250px;
+  position: absolute;
+  z-index: 6;
+}
+
+.digitalTime {
+  position: relative;
+  color: white; 
+  font-size: 25px;
+  z-index: 8;
+}
+
+.circular{
+  height:100%;
+  width: 100%;
+  position: absolute;  
+}
+
+.circular .inner{
+  position: absolute;
+  z-index: 6;
+  top: 50%;
+  left: 50%;
+  height: 380px;
+  width: 380px;
+  margin: -190px 0 0 -190px ;
+  background-color: rgb(64, 57, 78);
+  border-radius: 100%;
+}
+
+.circular .bar{
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  background: rgb(64, 57, 78);
+  border-radius: 100%;
+  -webkit-border-radius: 100%;
+  clip: rect(0px, 400px, 400px, 200px);
+}
+
+.circle .bar .progress{
+  position: absolute;
+  height: 100%;
+  width: 100%;
+  border-radius: 100%;
+  -webkit-border-radius: 100%;
+  clip: rect(0px, 200px, 400px, 0px);
+  background: dodgerblue;
+}
+
+.circle .right {
+  transform: rotate(180deg);
+  z-index:3;
 }
